@@ -1,13 +1,33 @@
-import "./App.css";
+import React from "react";
+import { ChakraProvider, Box, Flex, Text, VStack, HStack, Link, Button } from "@chakra-ui/react";
+import Envelope from "./component/Envelope";
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
+import FullVideo from "./component/FullVideo";
 
-function App() {
+const App = () => {
   return (
-    <main className="flex justify-center gap-4 flex-col min-h-screen">
-      <h1 className="text-3xl text-center font-bold underline">React & Tailwind CSS Starter Pack</h1>
-      <p className="text-center text-xl">This is a starter pack for React & Tailwind CSS projects.</p>
-      <img src="https://bit.ly/3wsmzTy" alt="meme" className="mx-auto" />
-    </main>
+    <ChakraProvider>
+      {/* Main App Wrapper */}
+      <Flex direction="column" minH="100vh">
+        {/* Header */}
+        <Header></Header>
+
+        {/* Main Content */}
+        <Flex flex="1" direction={{ base: "column", md: "row" }}>
+          {/* Main Content Area */}
+          <Box as="main" flex="1" p={6} bg="gray.50">
+            <FullVideo></FullVideo>
+            <Envelope></Envelope>
+          </Box>
+        </Flex>
+
+        {/* Footer */}
+        <Footer></Footer>
+      </Flex>
+    </ChakraProvider>
   );
-}
+};
 
 export default App;
+
